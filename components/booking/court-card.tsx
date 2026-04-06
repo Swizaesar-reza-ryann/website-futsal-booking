@@ -1,24 +1,22 @@
-'use client'
+'use client';
 
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Court, formatCurrency } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Court, formatCurrency } from '@/lib/types';
+import { cn } from '@/lib/utils';
 
 interface CourtCardProps {
-  court: Court
-  isSelected: boolean
-  onSelect: (court: Court) => void
+  court: Court;
+  isSelected: boolean;
+  onSelect: (court: Court) => void;
 }
 
 export function CourtCard({ court, isSelected, onSelect }: CourtCardProps) {
   return (
     <Card
       className={cn(
-        'p-4 cursor-pointer transition-all duration-200 hover:shadow-md',
-        isSelected
-          ? 'ring-2 ring-primary bg-primary/5 border-primary'
-          : 'hover:border-primary/50'
+        'p-4 cursor-pointer transition-all duration-200 hover:shadow-md bg-background',
+        isSelected ? 'ring-2 ring-primary bg-primary/5 border-primary' : 'hover:border-primary/50'
       )}
       onClick={() => onSelect(court)}
     >
@@ -39,5 +37,5 @@ export function CourtCard({ court, isSelected, onSelect }: CourtCardProps) {
         <span className="text-muted-foreground font-normal text-sm">/jam</span>
       </p>
     </Card>
-  )
+  );
 }

@@ -4,38 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.985 0.002 240);
-  --foreground: oklch(0.145 0.015 240);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0.015 240);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0.015 240);
-  --primary: oklch(0.55 0.2 145);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.97 0.005 240);
-  --secondary-foreground: oklch(0.145 0.015 240);
-  --muted: oklch(0.96 0.005 240);
+  --background: oklch(1 0 0); /* Putih bersih */
+  --foreground: oklch(0.15 0.02 240); /* Text gelap */
+  --card: oklch(0.98 0.005 0); /* Card putih */
+  --card-foreground: oklch(0.15 0.02 240);
+  --popover: oklch(0.98 0.005 0);
+  --popover-foreground: oklch(0.15 0.02 240);
+  --primary: oklch(0.55 0.2 145); /* Hijau rumput segar */
+  --primary-foreground: oklch(1 0 0); /* Text putih */
+  --secondary: oklch(0.94 0.01 0); /* Secondary putih */
+  --secondary-foreground: oklch(0.15 0.02 240);
+  --muted: oklch(0.96 0.01 0); /* Muted putih */
   --muted-foreground: oklch(0.45 0.02 240);
-  --accent: oklch(0.75 0.15 85);
-  --accent-foreground: oklch(0.2 0.05 85);
+  --accent: oklch(0.65 0.15 145); /* Hijau accent */
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.90 0.01 240);
-  --input: oklch(0.92 0.01 240);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.01 0); /* Border abu-abu */
+  --input: oklch(0.94 0.01 0);
   --ring: oklch(0.55 0.2 145);
-  --chart-1: oklch(0.55 0.2 145);
-  --chart-2: oklch(0.75 0.15 85);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --chart-1: oklch(0.55 0.2 145); /* Hijau utama */
+  --chart-2: oklch(0.65 0.15 145); /* Hijau secondary */
+  --chart-3: oklch(0.45 0.18 145); /* Hijau gelap */
+  --chart-4: oklch(0.75 0.12 145); /* Hijau muda */
+  --chart-5: oklch(0.35 0.22 145); /* Hijau tua */
+  --radius: 0.5rem;
+  --sidebar: oklch(0.98 0.005 0);
+  --sidebar-foreground: oklch(0.15 0.02 240);
   --sidebar-primary: oklch(0.55 0.2 145);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0.01 0);
+  --sidebar-accent-foreground: oklch(0.15 0.02 240);
+  --sidebar-border: oklch(0.9 0.01 0);
   --sidebar-ring: oklch(0.55 0.2 145);
 }
 

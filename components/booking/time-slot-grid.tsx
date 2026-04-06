@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import { Clock, MapPin } from 'lucide-react'
-import { Card } from '@/components/ui/card'
-import { TimeSlot, OPERATING_HOURS } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { Clock, MapPin } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { TimeSlot, OPERATING_HOURS } from '@/lib/types';
+import { cn } from '@/lib/utils';
 
 interface TimeSlotGridProps {
-  slots: TimeSlot[]
-  selectedSlots: number[]
-  onSlotToggle: (hour: number) => void
-  courtSelected: boolean
+  slots: TimeSlot[];
+  selectedSlots: number[];
+  onSlotToggle: (hour: number) => void;
+  courtSelected: boolean;
 }
 
 export function TimeSlotGrid({
@@ -20,22 +20,22 @@ export function TimeSlotGrid({
 }: TimeSlotGridProps) {
   if (!courtSelected) {
     return (
-      <Card className="p-8 flex flex-col items-center justify-center text-center min-h-[200px]">
+      <Card className="p-8 flex flex-col items-center justify-center text-center min-h-[200px] bg-background">
         <MapPin className="w-10 h-10 text-muted-foreground/50 mb-4" />
         <p className="text-muted-foreground">
           Pilih lapangan terlebih dahulu untuk melihat slot yang tersedia.
         </p>
       </Card>
-    )
+    );
   }
 
   return (
     <div className="space-y-4">
-      <Card className="p-4">
+      <Card className="p-4 bg-background">
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
-          {slots.map((slot) => {
-            const isSelected = selectedSlots.includes(slot.hour)
-            const isDisabled = slot.status === 'booked' || slot.status === 'past'
+          {slots.map(slot => {
+            const isSelected = selectedSlots.includes(slot.hour);
+            const isDisabled = slot.status === 'booked' || slot.status === 'past';
 
             return (
               <button
@@ -49,8 +49,8 @@ export function TimeSlotGrid({
                       ? 'bg-destructive/10 border-destructive/30 cursor-not-allowed opacity-60'
                       : 'bg-muted border-border cursor-not-allowed opacity-50'
                     : isSelected
-                    ? 'bg-primary text-primary-foreground border-primary'
-                    : 'bg-card border-border hover:border-primary/50 hover:bg-primary/5'
+                      ? 'bg-primary text-primary-foreground border-primary'
+                      : 'bg-card border-border hover:border-primary/50 hover:bg-primary/5'
                 )}
               >
                 <Clock
@@ -69,7 +69,7 @@ export function TimeSlotGrid({
                   {slot.endTime}
                 </span>
               </button>
-            )
+            );
           })}
         </div>
       </Card>
@@ -93,24 +93,21 @@ export function TimeSlotGrid({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export function generateTimeSlots(
-  date: Date,
-  bookedHours: number[]
-): TimeSlot[] {
-  const slots: TimeSlot[] = []
-  const now = new Date()
-  const isToday = date.toDateString() === now.toDateString()
+export function generateTimeSlots(date: Date, bookedHours: number[]): TimeSlot[] {
+  const slots: TimeSlot[] = [];
+  const now = new Date();
+  const isToday = date.toDateString() === now.toDateString();
 
   for (let hour = OPERATING_HOURS.start; hour < OPERATING_HOURS.end; hour++) {
-    let status: TimeSlot['status'] = 'available'
+    let status: TimeSlot['status'] = 'available';
 
     if (bookedHours.includes(hour)) {
-      status = 'booked'
+      status = 'booked';
     } else if (isToday && hour <= now.getHours()) {
-      status = 'past'
+      status = 'past';
     }
 
     slots.push({
@@ -118,8 +115,8 @@ export function generateTimeSlots(
       startTime: `${hour.toString().padStart(2, '0')}:00`,
       endTime: `${(hour + 1).toString().padStart(2, '0')}:00`,
       status,
-    })
+    });
   }
 
-  return slots
+  return slots;
 }

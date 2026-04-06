@@ -1,72 +1,91 @@
-'use client'
+'use client';
 
-import { Shield, Zap, Users, Award, Clock, Wifi } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { Shield, Zap, Users, Award, Clock, Wifi } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 const features = [
   {
     icon: Shield,
-    title: 'Lapangan Premium',
-    description: 'Rumput sintetis FIFA Quality Pro dengan bantalan shock absorber untuk perlindungan maksimal.',
+    title: 'LAPANGAN FUTSAL PRO',
+    description:
+      'Rumput sintetis bersertifikat FIFA dengan pantulan bola optimal dan traksi pemain untuk keunggulan indoor.',
   },
   {
     icon: Zap,
-    title: 'Pencahayaan Stadium',
-    description: 'LED lighting 500 lux yang merata, standar pertandingan profesional tanpa bayangan.',
+    title: 'SISTEM PENCAHAYAAN ARENA',
+    description:
+      'Pencahayaan profesional 500 lux tanpa silau, sempurna untuk gameplay futsal teknis.',
   },
   {
     icon: Users,
-    title: 'Ruang Ganti Luas',
-    description: 'Locker room dengan shower air panas, area istirahat, dan perlengkapan lengkap.',
+    title: 'KOMPLEKS RUANG GANTI TIM',
+    description:
+      'Fasilitas level kejuaraan dengan area taktis, shower air panas, dan zona pemulihan performa.',
   },
   {
     icon: Award,
-    title: 'Standar Internasional',
-    description: 'Dimensi lapangan sesuai regulasi FIFA untuk futsal dan mini soccer.',
+    title: 'REGULASI FUTSAL',
+    description:
+      'Dimensi resmi 40x20m dengan area gawang dan titik penalti yang tepat untuk pertandingan kompetitif.',
   },
   {
     icon: Clock,
-    title: 'Booking Fleksibel',
-    description: 'Reservasi online 24/7, bisa booking hingga 3 bulan ke depan dengan konfirmasi instan.',
+    title: 'PEMESANAN HARI PERTANDINGAN',
+    description:
+      'Jadwalkan pertandingan futsal Anda 24/7 dengan konfirmasi lapangan instan dan slot waktu fleksibel.',
   },
   {
     icon: Wifi,
-    title: 'Free WiFi & Parkir',
-    description: 'Koneksi internet cepat dan area parkir luas gratis untuk semua pengunjung.',
+    title: 'FASILITAS PENONTON',
+    description:
+      'Area menonton, kemampuan streaming langsung, dan amenitas premium untuk pengalaman pertandingan lengkap.',
   },
-]
+];
 
 export function Features() {
   return (
-    <section id="facilities" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-            Fasilitas Kami
+    <section id="facilities" className="py-20 bg-background relative overflow-hidden">
+      {/* Futsal field background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(34,197,94,0.2) 40px, rgba(34,197,94,0.2) 41px),
+                           repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(34,197,94,0.15) 40px, rgba(34,197,94,0.15) 41px)`,
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <span className="text-primary font-black text-sm uppercase tracking-widest border-2 border-primary/20 px-4 py-2 rounded-full">
+            ⚽ FASILITAS ARENA FUTSAL
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 text-foreground text-balance">
-            Arena Berstandar Internasional
+          <h2 className="text-4xl md:text-5xl font-black mt-4 mb-6 text-foreground text-balance">
+            DIRANCANG UNTUK
+            <span className="text-primary block">JUARA INDOOR</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Nikmati fasilitas kelas dunia yang dirancang khusus untuk memberikan pengalaman bermain futsal terbaik.
+          <p className="text-foreground/70 max-w-3xl mx-auto leading-relaxed text-lg font-medium">
+            Setiap elemen dirancang untuk keunggulan futsal. Dari dimensi lapangan regulasi hingga
+            pencahayaan profesional, kami telah menciptakan lingkungan sepak bola indoor yang
+            sempurna.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <Card
               key={feature.title}
-              className="group hover:shadow-lg transition-all duration-300 border-border hover:border-primary/30"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 border-2 border-border/50 hover:border-primary/50 bg-card/70 backdrop-blur-sm"
             >
-              <CardContent className="p-6">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-primary" />
+              <CardContent className="p-8">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border-2 border-primary/30">
+                  <feature.icon className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2 text-foreground">
+                <h3 className="font-black text-xl mb-3 text-foreground uppercase tracking-wide">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-foreground/60 text-sm leading-relaxed font-medium">
                   {feature.description}
                 </p>
               </CardContent>
@@ -75,5 +94,5 @@ export function Features() {
         </div>
       </div>
     </section>
-  )
+  );
 }

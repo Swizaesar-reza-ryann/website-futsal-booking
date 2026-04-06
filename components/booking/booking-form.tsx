@@ -1,33 +1,30 @@
-'use client'
+'use client';
 
-import { User, Phone, Mail, FileText } from 'lucide-react'
-import { Card } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
+import { User, Phone, Mail, FileText } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 
 interface CustomerData {
-  name: string
-  phone: string
-  email: string
-  notes: string
+  name: string;
+  phone: string;
+  email: string;
+  notes: string;
 }
 
 interface BookingFormProps {
-  data: CustomerData
-  onChange: (data: CustomerData) => void
+  data: CustomerData;
+  onChange: (data: CustomerData) => void;
 }
 
 export function BookingForm({ data, onChange }: BookingFormProps) {
-  const handleChange = (
-    field: keyof CustomerData,
-    value: string
-  ) => {
-    onChange({ ...data, [field]: value })
-  }
+  const handleChange = (field: keyof CustomerData, value: string) => {
+    onChange({ ...data, [field]: value });
+  };
 
   return (
-    <Card className="p-6">
+    <Card className="p-6 bg-background">
       <div className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="name" className="flex items-center gap-2">
@@ -38,7 +35,7 @@ export function BookingForm({ data, onChange }: BookingFormProps) {
             id="name"
             placeholder="Contoh: Budi Santoso"
             value={data.name}
-            onChange={(e) => handleChange('name', e.target.value)}
+            onChange={e => handleChange('name', e.target.value)}
           />
         </div>
 
@@ -52,7 +49,7 @@ export function BookingForm({ data, onChange }: BookingFormProps) {
               id="phone"
               placeholder="08xxxxxxxxxx"
               value={data.phone}
-              onChange={(e) => handleChange('phone', e.target.value)}
+              onChange={e => handleChange('phone', e.target.value)}
             />
           </div>
 
@@ -66,7 +63,7 @@ export function BookingForm({ data, onChange }: BookingFormProps) {
               type="email"
               placeholder="email@domain.com"
               value={data.email}
-              onChange={(e) => handleChange('email', e.target.value)}
+              onChange={e => handleChange('email', e.target.value)}
             />
           </div>
         </div>
@@ -80,11 +77,11 @@ export function BookingForm({ data, onChange }: BookingFormProps) {
             id="notes"
             placeholder="Butuh rompi, bola tambahan, dll."
             value={data.notes}
-            onChange={(e) => handleChange('notes', e.target.value)}
+            onChange={e => handleChange('notes', e.target.value)}
             rows={3}
           />
         </div>
       </div>
     </Card>
-  )
+  );
 }
