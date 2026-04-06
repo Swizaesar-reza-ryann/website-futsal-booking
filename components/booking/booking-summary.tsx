@@ -1,18 +1,18 @@
-'use client'
+'use client';
 
-import { MapPin, CalendarDays, Clock, User, ChevronRight, CreditCard } from 'lucide-react'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Court, formatCurrency, formatShortDate } from '@/lib/types'
+import { MapPin, CalendarDays, Clock, User, ChevronRight, CreditCard } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Court, formatCurrency, formatShortDate } from '@/lib/types';
 
 interface BookingSummaryProps {
-  court: Court | null
-  date: Date | null
-  selectedSlots: number[]
-  customerName: string
-  onConfirm: () => void
-  isValid: boolean
-  validationMessage: string
+  court: Court | null;
+  date: Date | null;
+  selectedSlots: number[];
+  customerName: string;
+  onConfirm: () => void;
+  isValid: boolean;
+  validationMessage: string;
 }
 
 export function BookingSummary({
@@ -24,11 +24,11 @@ export function BookingSummary({
   isValid,
   validationMessage,
 }: BookingSummaryProps) {
-  const totalPrice = court ? court.pricePerHour * selectedSlots.length : 0
-  const pricePerHour = court?.pricePerHour || 0
+  const totalPrice = court ? court.pricePerHour * selectedSlots.length : 0;
+  const pricePerHour = court?.pricePerHour || 0;
 
   return (
-    <Card className="sticky top-24">
+    <Card className="sticky top-24 bg-background">
       <CardHeader className="pb-4">
         <CardTitle className="text-lg font-bold">RINGKASAN BOOKING</CardTitle>
       </CardHeader>
@@ -46,9 +46,7 @@ export function BookingSummary({
             <CalendarDays className="w-4 h-4 text-muted-foreground mt-0.5" />
             <div>
               <p className="text-sm text-muted-foreground">Tanggal</p>
-              <p className="font-medium">
-                {date ? formatShortDate(date) : '—'}
-              </p>
+              <p className="font-medium">{date ? formatShortDate(date) : '—'}</p>
             </div>
           </div>
 
@@ -60,7 +58,7 @@ export function BookingSummary({
                 {selectedSlots.length > 0
                   ? selectedSlots
                       .sort((a, b) => a - b)
-                      .map((h) => `${h.toString().padStart(2, '0')}:00`)
+                      .map(h => `${h.toString().padStart(2, '0')}:00`)
                       .join(', ')
                   : '—'}
               </p>
@@ -78,13 +76,9 @@ export function BookingSummary({
 
         <div className="border-t border-border pt-4 space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">
-              Harga sewa ({selectedSlots.length} jam)
-            </span>
+            <span className="text-muted-foreground">Harga sewa ({selectedSlots.length} jam)</span>
             <span>
-              {selectedSlots.length > 0
-                ? formatCurrency(pricePerHour * selectedSlots.length)
-                : '—'}
+              {selectedSlots.length > 0 ? formatCurrency(pricePerHour * selectedSlots.length) : '—'}
             </span>
           </div>
           <div className="flex justify-between font-bold">
@@ -110,11 +104,9 @@ export function BookingSummary({
         </Button>
 
         {!isValid && (
-          <p className="text-center text-sm text-muted-foreground">
-            {validationMessage}
-          </p>
+          <p className="text-center text-sm text-muted-foreground">{validationMessage}</p>
         )}
       </CardContent>
     </Card>
-  )
+  );
 }
